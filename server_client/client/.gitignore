@@ -1,7 +1,7 @@
 # Prerequisites
 *.d
 debug_*
-main
+client
 .idea
 # Object files
 *.o

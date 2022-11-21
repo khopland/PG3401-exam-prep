@@ -3,23 +3,23 @@ CC = gcc
 CFLAGS = -O2
 CFLAGS += -Wall -g -Werror
 CFLAGS += -I$(INCLDIR)
-LINKEXTRA = -lpthread
+LINKEXTRA = 
 
 OBJDIR = obj
 
 _DEPS = debugger.h
 DEPS = $(patsubst %,$(INCLDIR)/%,$(_DEPS))
 
-_OBJS = main.o debugger.o
+_OBJS = client.o debugger.o
 OBJS = $(patsubst %,$(OBJDIR)/%,$(_OBJS))
 
 
 $(OBJDIR)/%.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS) 
 
-all: main
+all: client
 
-main: $(OBJS)
+client: $(OBJS)
 	$(CC) -o $@ $^ $(CFLAGS) $(LINKEXTRA)
 
 .PHONY: clean

@@ -10,16 +10,16 @@ OBJDIR = obj
 _DEPS = debugger.h
 DEPS = $(patsubst %,$(INCLDIR)/%,$(_DEPS))
 
-_OBJS = main.o debugger.o
+_OBJS = server.o debugger.o
 OBJS = $(patsubst %,$(OBJDIR)/%,$(_OBJS))
 
 
 $(OBJDIR)/%.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS) 
 
-all: main
+all: server
 
-main: $(OBJS)
+server: $(OBJS)
 	$(CC) -o $@ $^ $(CFLAGS) $(LINKEXTRA)
 
 .PHONY: clean
